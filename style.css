@@ -9,3 +9,36 @@
 			
 	License: This is a private theme by the authors
 */
+
+/*食物类别样式*/
+    .model_1 .foodlabel {
+      text-align: center;
+      vertical-align: middle;
+      width: 40px;
+    }
+    
+    .model_1 .foodlabel div {
+      width: 40px;
+      height: 40px; 
+    
+      background-color: #ff4d4d;
+      vertical-align: middle;
+      
+      -moz-border-radius: 20px 20px 20px 20px;
+      border-radius: 20px 20px 20px 20px;
+      
+      display: table;
+    }
+    
+    .model_1 .LabelText {
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 600;
+    
+      padding: 0 6px 0 6px;
+      margin: 0;
+      
+      vertical-align: middle;
+      
+      display: table-cell;
+    }

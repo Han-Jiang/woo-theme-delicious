@@ -38,11 +38,11 @@
   <script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
 
   <!-- iscroll插件 -->
-  <script src="<?php bloginfo('template_url'); ?>/js/iscroll/iscroll-lite.js"></script>
+  <script src="<?php bloginfo('template_url'); ?>/js/iscroll-lite.js"></script>
   
   <!-- 载入自定义的js和css -->
-  <script src="<?php bloginfo('template_url'); ?>/js/shoporder.js?version=1.0.3.1"></script>
-  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/css/shop.css?version=1.0.3.7" />
+  <script src="<?php bloginfo('template_url'); ?>/js/shoporder.js"></script>
+  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_url'); ?>/css/shop.css" />
 	
   <!-- 插入导航JS -->
   <script>
@@ -67,7 +67,6 @@
           $.mobile.defaultDialogTransition = 'pop';
         }
 
-        $.mobile.ajaxLinksEnabled = false; 
       });
     </script>
 
