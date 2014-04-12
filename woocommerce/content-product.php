@@ -70,8 +70,11 @@ if($terms){
 			<td>
 				<a href="#" onclick="showfoodinfo('<?php the_title(); ?>')" data-role="button" data-inline="true" data-mini="true">详情</a>
 			</td>								 
-			<td class="food-op">									
+			<td class="food-op">
+
+				<?php woocommerce_template_single_add_to_cart(); ?>							
 				<span class="reduce-btn"><a href="#" onclick="order_dec_onclick(<?php echo get_the_ID(); ?>, '/index.php?r=show/reducefood&food_id=<?php echo get_the_ID(); ?>&customer_id=348801&wxusername=oiRPcjkEe0gxS8s5gUuoNW2RD5zg&admin_id=295&shop_id=712')" data-role="button" data-inline="true">-</a></span>
+				
 				<div id="order_foodnum_<?php echo get_the_ID(); ?>" class="foodnum">
 					0									</div>
 				<span class="add-btn"><a href="#" onclick="order_plus_onclick(<?php echo get_the_ID(); ?>, '/index.php?r=show/addfood&food_id=<?php echo get_the_ID(); ?>&customer_id=348801&wxusername=oiRPcjkEe0gxS8s5gUuoNW2RD5zg&admin_id=295&shop_id=712')" data-role="button" data-inline="true">+</a></span>

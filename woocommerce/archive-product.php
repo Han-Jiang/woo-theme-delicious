@@ -1,23 +1,42 @@
 
 <?php get_header(); ?>
 
+
+<?php
+			global $woocommerce;
+			// var_dump($woocommerce);
+
+			?>
+
 	<div data-role="content" id="order-layout">
+
 		<div class="order-info">
 			<div id="order_totalnum_layout">
-				<p id="order_totalnum_text">已选 <span id="order_totalnum">33</span></p>
+				<p id="order_totalnum_text">已选 
+				<span id="order_totalnum">
+				<?php 
+				global $woocommerce;
+				echo $woocommerce->cart->get_cart_contents_count();
+				?>
+				</span></p>
 			</div>
 			
-			<p id="order_totalprice_text">£<span id="order_totalprice">267</span></p>	
+			<p id="order_totalprice_text">
+			<span id="order_totalprice">
+			<?php
+			global $woocommerce;
+			echo $woocommerce->cart->get_cart_total();
+			?></span></p>	
 			
 			<div id="order_next_layout">
-				<a id="order_next_text" href="/index.php?r=show/shopcart&customerid=348801&wxusername=oiRPcjkEe0gxS8s5gUuoNW2RD5zg&adminId=295&shopId=712">下一步 ＞</a>
+				<a id="order_next_text" href="<?php echo $woocommerce->cart->get_cart_url(); ?>">下一步 ＞</a>
 			</div>	
 		</div>
-		
+
 		<div class="order-content">
 			<div id="typelist">
-				<div id="wrapper">
-					<div id="scroller">
+				<div id="wrapper_menu">
+					<div id="scroller_menu">
 						<ul>
 
 						<?php
@@ -40,8 +59,8 @@
 			</div>  <!-- #typelist -->
 			
 			<div id="foodlist">
-				<div id="wrapper2">
-					<div id="scroller2">
+				<div id="wrapper_content" class="wrapper">
+					<div id="scroller_content" class="scroller">
 	
 						<div class="model_1">
 	
@@ -68,7 +87,7 @@
 	<!-- 菜式详情-->	
 	<div data-role="popup" id="popupFoodinfo" data-overlay-theme="a" data-theme="d" data-tolerance="15, 15" class="ui-content">
 		<button onclick="closefoodinfo()" data-theme="a" data-inline="true" data-mini="true" data-icon="delete" data-iconpos="notext" class="ui-btn-right">关闭</button>
-	    <div id="wrapper3">
+	    <div id="wrapper_popup" class="wrapper">
 	    	<div id="foodinfo-content">
 	    	</div>
 	    </div>

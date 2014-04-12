@@ -12,22 +12,4 @@ if ( ! function_exists( 'delicious_menu_setup' ) ):
     	} 
 endif;
 
-
-
-function cs_wc_loop_add_to_cart_scripts() {
-    if ( is_shop() || is_product_category() || is_product_tag() || is_product() ) : ?>
- 
-	<script>
-	    jQuery(document).ready(function($) {
-	        $(document).on( 'change', '.quantity .qty', function() {
-	            $(this).parent('.quantity').next('.add_to_cart_button').attr('data-quantity', $(this).val());
-	        });
-	    });
-	</script>
- 
-    <?php endif;
-}
- 
-add_action( 'wp_footer', 'cs_wc_loop_add_to_cart_scripts' );
-
 ?>
