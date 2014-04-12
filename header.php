@@ -68,12 +68,19 @@
         }
       });
     </script>
+    <script> 
+     $(document).ready(function() { 
+      // disable ajax nav 
+      $.mobile.ajaxLinksEnabled = false; 
+     }); 
+    </script> 
 
   <?php wp_head(); ?>   
   </head>
 <body>
 
-<div data-role="page" id="shoporder-page"> 
+<div data-role="page" id = "shoporder-page"> 
+
 
   <script type="text/javascript">
     var height = 0;
@@ -96,8 +103,8 @@
   </script>
   
     
-  <div data-role="header" data-position="fixed" data-tap-toggle="false" data-id="shop_header" id="pagetop">
-    <h1>伯明翰汉朝餐厅</h1>
+  <div id="pagetop" data-role="header" data-position="fixed" data-tap-toggle="false" data-id="shop_header">
+    <h1 id = "page_title">伯明翰汉朝餐厅</h1>
     <a data-icon="search" class="ui-btn-right" onclick="cbutton(this);">搜索</a>
   </div>
 
@@ -109,10 +116,4 @@
       </div>
     </form>
   </div>
-
-      
-
-
-
-
 

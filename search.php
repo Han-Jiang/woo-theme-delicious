@@ -1,5 +1,10 @@
 
-<?php get_header(); ?>	
+<?php get_header(); ?>
+	<script type="text/javascript">
+
+      $('#page_title').text("search");
+
+  	</script>
 
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 		

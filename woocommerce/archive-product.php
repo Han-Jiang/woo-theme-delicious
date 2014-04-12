@@ -1,6 +1,18 @@
-<?php get_header(); ?>
-	
 
+<?php
+/**
+ * The Template for displaying product archives, including the main shop page which is a post type archive.
+ *
+ * Override this template by copying it to yourtheme/woocommerce/archive-product.php
+ *
+ * @author 		WooThemes
+ * @package 	WooCommerce/Templates
+ * @version     2.0.0
+ */
+
+if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+get_header( 'shop' ); ?>
 
 	<style>
 		.model_1 .foodlabel {
@@ -107,7 +119,7 @@
 			document.getElementById('shoporder-page').addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
 		})
 		
-		function showfoodinfo(food_id)
+		function showfoodinfo(food_name)
 		{
 			function OnFoodinfoSuccess(data, status)
 			{
@@ -124,7 +136,7 @@
 
 			$.ajax({
 		        type: "GET",
-		        url: "index.php?r=show/foodinfo&food_id="+food_id+'&customerid=348801',
+		        url: "<?php bloginfo('url')?>/?product="+food_name,
 		        dataType : "html",  
 		        cache : false,
 		        success: OnFoodinfoSuccess,
@@ -211,7 +223,11 @@
 						  );
 						$categories=get_categories($args);
 						  foreach($categories as $category) {?>
-						  	<li id="<?=$category->cat_ID ?>" class="" onclick="showfood(this)"><span><?= $category->name ?></span></li>
+						  	<li id="foodtype_<?=$category->cat_ID ?>" class="" onclick="showfood(this)"><span><?= $category->name ?></span></li>
+						<?php } ?>
+
+						<?php foreach($categories as $category) {?>
+						  	<li id="foodtype_<?=$category->cat_ID ?>" class="" onclick="showfood(this)"><span><?= $category->name ?></span></li>
 						<?php } ?>
 								
 							<div style="height: 10px;"></div>					
@@ -223,13 +239,91 @@
 			<div id="foodlist">
 				<div id="wrapper2">
 					<div id="scroller2">
-						
-
-
+	
 						<div class="model_1">
-												
-														
-								<div style="height: 10px;"></div>
+	
+	<?php
+		/**
+		 * woocommerce_before_main_content hook
+		 *
+		 * @hooked woocommerce_output_content_wrapper - 10 (outputs opening divs for the content)
+		 * @hooked woocommerce_breadcrumb - 20
+		 */
+		// 输出breadcrum
+		// do_action( 'woocommerce_before_main_content' );
+	?>
+
+		<?php if ( apply_filters( 'woocommerce_show_page_title', true ) ) : ?>
+
+			<!-- 页面标题 -->
+			<!-- <h1 class="page-title"><?php woocommerce_page_title(); ?></h1> -->
+
+		<?php endif; ?>
+
+		<?php do_action( 'woocommerce_archive_description' ); ?>
+
+		<?php if ( have_posts() ) : ?>
+			
+			<?php
+				/**
+				 * woocommerce_before_shop_loop hook
+				 *
+				 * @hooked woocommerce_result_count - 20
+				 * @hooked woocommerce_catalog_ordering - 30
+				 */
+				//do_action( 'woocommerce_before_shop_loop' );
+			?>
+			
+
+			<!-- this will load /loop/loop_start -->
+			<?php //woocommerce_product_loop_start(); ?>
+				 
+				<?php woocommerce_product_subcategories(); ?> 
+
+				<?php while ( have_posts() ) : the_post(); ?>
+
+					<?php wc_get_template_part( 'content', 'product' ); ?>
+
+				<?php endwhile; // end of the loop. ?>
+
+			<?php //woocommerce_product_loop_end(); ?>
+
+			<?php
+				/**
+				 * woocommerce_after_shop_loop hook
+				 *
+				 * @hooked woocommerce_pagination - 10
+				 */
+				do_action( 'woocommerce_after_shop_loop' );
+			?>
+
+		<?php elseif ( ! woocommerce_product_subcategories( array( 'before' => woocommerce_product_loop_start( false ), 'after' => woocommerce_product_loop_end( false ) ) ) ) : ?>
+
+			<?php wc_get_template( 'loop/no-products-found.php' ); ?>
+
+		<?php endif; ?>
+
+	<?php
+		/**
+		 * woocommerce_after_main_content hook
+		 *
+		 * @hooked woocommerce_output_content_wrapper_end - 10 (outputs closing divs for the content)
+		 */
+
+		do_action( 'woocommerce_after_main_content' );
+	?>
+
+	<?php
+		/**
+		 * woocommerce_sidebar hook
+		 *
+		 * @hooked woocommerce_get_sidebar - 10
+		 */
+		// 侧边栏,包含搜索等默认widget
+		//do_action( 'woocommerce_sidebar' );
+	?>
+
+							<div style="height: 10px;"></div>
 						</div>
 		
 					</div>
@@ -248,4 +342,4 @@
 	    </div>
 	</div>
 
-<?php get_footer();?>
+<?php get_footer( 'shop' ); ?>
