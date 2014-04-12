@@ -40,8 +40,6 @@ if($terms){
 ?>
 
 
-
-
 <div class="fooditem foodtype_<?php echo $product_cat_id;?>_food" style="display:block;">
 																	
 	<div id="foodtitle_<?php echo get_the_ID(); ?>" class="foodtitle" onclick="foodtitleClick(<?php echo get_the_ID(); ?>)">

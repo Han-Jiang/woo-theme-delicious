@@ -66,54 +66,14 @@
           $.mobile.defaultPageTransition = 'slide'; 
           $.mobile.defaultDialogTransition = 'pop';
         }
+
+        $.mobile.ajaxLinksEnabled = false; 
       });
     </script>
-    <script> 
-     $(document).ready(function() { 
-      // disable ajax nav 
-      $.mobile.ajaxLinksEnabled = false; 
-     }); 
-    </script> 
 
   <?php wp_head(); ?>   
   </head>
 <body>
 
-<div data-role="page" id = "shoporder-page"> 
-
-
-  <script type="text/javascript">
-    var height = 0;
-    function cbutton(obj){
-      if(height == 0){
-        height = $('#pagetop').css('height');
-        $('#box').css('top',height);  
-      }
-      $('#box').toggle();
-    }
-
-    function submitsearch(){
-      var keyword = $('#keyword').val();
-      if(keyword == ''){
-        $('#s').focus();
-      }else{
-        $('#searchform').submit();
-      }
-    }
-  </script>
-  
-    
-  <div id="pagetop" data-role="header" data-position="fixed" data-tap-toggle="false" data-id="shop_header">
-    <h1 id = "page_title">伯明翰汉朝餐厅</h1>
-    <a data-icon="search" class="ui-btn-right" onclick="cbutton(this);">搜索</a>
-  </div>
-
-  <div id="box" style="width:100%;background:#ffffff;position:fixed;top:0px;left:0px;display:none;padding-buttom:20px;z-index:9999;">
-    <form id="searchform" action="<?php bloginfo('url')?>/" method="post">
-      <div style="width:95%;margin:0 auto;position:relative;">
-        <input type="text" name="s" placeholder="搜索商品" id="s"/>
-        <span onclick="return submitsearch();" style="position:absolute;background:transparent;border:0;width:50px;top:9px;right:3px;z-index:9999;">搜索</span>
-      </div>
-    </form>
-  </div>
-
+<div data-role="page" id = "shoporder-page">  
+  <?php require_once('header-jqm.php') ?>
