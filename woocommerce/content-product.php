@@ -72,7 +72,7 @@ if($terms){
 			</td>								 
 			<td class="food-op">
 
-				<?php woocommerce_template_single_add_to_cart(); ?>							
+				<?php woocommerce_template_single_add_to_cart();?>							
 				<span class="reduce-btn"><a href="#" onclick="order_dec_onclick(<?php echo get_the_ID(); ?>, '/index.php?r=show/reducefood&food_id=<?php echo get_the_ID(); ?>&customer_id=348801&wxusername=oiRPcjkEe0gxS8s5gUuoNW2RD5zg&admin_id=295&shop_id=712')" data-role="button" data-inline="true">-</a></span>
 				
 				<div id="order_foodnum_<?php echo get_the_ID(); ?>" class="foodnum">

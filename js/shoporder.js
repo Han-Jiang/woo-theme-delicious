@@ -70,10 +70,10 @@ function foodtypeClick(foodtypeId, destUrl)
 		hideLoader();
 		
 		//先更新右侧内容
-		myScroll2.scrollTo(0, 0, 200, 0);
-		$("#scroller2").empty();	
-	    $("#scroller2").html(data);
-	    myScroll2.refresh();
+		scroller_content.scrollTo(0, 0, 200, 0);
+		$("#scroller_content").empty();	
+	    $("#scroller_content").html(data);
+	    scroller_content.refresh();
 	    
 	    //再更新左侧选中按钮
 	    document.getElementById('foodtype_' + curTypeId).className = "";
@@ -112,7 +112,7 @@ function foodtitleClick(food_id)
 	{
 		fooddetailObj.style.display = "none";
 	}
-	myScroll2.refresh();
+	scroller_content.refresh();
 	
 	if (curFoodId == food_id)
 	{

@@ -123,25 +123,29 @@
 </style>
 
 
-   <script type="text/javascript">
-    var iScroll_menu;
-    var iScroll_content;
-    var iScroll_popup;
+<script>
+    var curTypeId = 0;
+    var curFoodId = 0;
+    curTypeId = 2193;
 
-    function load_iScroll() {
-      iScroll_menu = new IScroll("#wrapper_menu", {
+    var scroller_menu;
+    var scroller_content;
+    var scroller_popup;
+
+    function load_Scroller() {
+      scroller_menu = new IScroll("#wrapper_menu", {
         click: true,
       });
       
-      iScroll_content = new IScroll('#wrapper_content', {
+      scroller_content = new IScroll('#wrapper_content', {
         eventPassthrough: false,
         preventDefault: false,
         useTransition: false,
       });
     }
 
-    function load_iScroll_Popup() {
-      iScroll_popup = new IScroll("#wrapper_popup", {
+    function load_Scroller_Popup() {
+      scroller_popup = new IScroll("#wrapper_popup", {
         click: true,
       });
     }
@@ -177,7 +181,7 @@
             popupafteropen: function() {
               hideLoader();
               //初始化滚动条相关的东西
-              setTimeout(function () { load_iScroll_Popup(); }, 200);
+              setTimeout(function () { load_Scroller_Popup(); }, 200);
             },
             popupafterclose: function() {
                $("#wrapper_popup").css("width", 0);
@@ -186,24 +190,20 @@
         });
 
       //初始化滚动条相关的东西
-      setTimeout(function () { load_iScroll(); }, 200);
+      setTimeout(function () { load_Scroller(); }, 200);
 
       document.getElementById('shoporder-page').addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
     })
     
-var curTypeId = 0;
-    var curFoodId = 0;
-    curTypeId = 2193;
-
-//打开食物详情页面
+  //打开食物详情页面
    function showfoodinfo(food_name)
-    {
+   {
       function OnFoodinfoSuccess(data, status)
       {
         document.getElementById('foodinfo-content').innerHTML = data;
         $('#popupFoodinfo').popup('open');
 
-        myScroll3.refresh();
+        scroller_popup.refresh();
       }
 
       function OnFoodinfoFailed(data, status) 
@@ -236,8 +236,8 @@ var curTypeId = 0;
       $('.fooditem').hide();
       $('.'+id+'_food').show();
 
-      myScroll2.scrollTo(0, 0, 200, 0);
-      myScroll2.refresh();
+      scroller_content.scrollTo(0, 0, 200, 0);
+      scroller_content.refresh();
     }
     function shouchang(obj,type){
       var tage = $(obj).attr('tage');
