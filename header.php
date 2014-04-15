@@ -120,6 +120,9 @@
   overflow:auto;
 }
 
+.button-small span:first-child{
+  padding: .2em 4px !important;}
+
 </style>
 
 
@@ -276,6 +279,77 @@
         $('#searchform').submit();
       }
     }
+
+
+    function food_add(food_id){
+      var curNum = parseInt(document.getElementById('order_foodnum_' + food_id).innerHTML);
+      curNum++;
+      if(curNum >= 99)
+      {
+        curNum=0;
+      }
+
+      document.getElementById('order_foodnum_' + food_id).innerHTML  = curNum;
+    }
+
+    function food_reduce(food_id){
+      var curNum = parseInt(document.getElementById('order_foodnum_' + food_id).innerHTML);
+      curNum--;
+      if(curNum < 0)
+      {
+        curNum = 1;
+      }
+      document.getElementById('order_foodnum_' + food_id).innerHTML  = curNum;
+    }
+
+
+  var toast=function(msg){
+    $("<div class='ui-loader ui-overlay-shadow ui-body-e ui-corner-all'><h3>"+msg+"</h3></div>")
+    .css({ display: "block", 
+      opacity: 0.90, 
+      position: "fixed",
+      padding: "7px",
+      "text-align": "center",
+      width: "270px",
+      left: ($(window).width() - 284)/2,
+      top: $(window).height()/2 })
+    .appendTo( $.mobile.pageContainer ).delay( 1500 )
+    .fadeOut( 400, function(){
+      $(this).remove();
+    });
+  }
+
+    function food_add_to_cart(food_id,food_price, destUrl)
+    {
+
+      var curNum = parseInt(document.getElementById('order_foodnum_' + food_id).innerHTML);
+
+      $.ajax({
+            type: "GET",
+            url: destUrl+curNum,
+            dataType : "html",  
+            cache : false,
+            success: OnFoodAddToCartSuccess(food_price,curNum),
+        });
+    }
+
+    function OnFoodAddToCartSuccess(food_price,food_num){
+      console.log("OnFoodAddToCartSuccess");
+      var  total_num = parseInt($("#order_totalnum").text());
+      var  total_price =  parseFloat($("#order_totalprice").text());
+      console.log( total_price);
+      // total_price_num =  total_price.subString(1);
+
+      console.log( total_num);
+      // console.log( total_price);
+      total_num = total_num + food_num;
+      
+      total_price = total_price + food_price*food_num;
+      $("#order_totalnum").text(total_num);
+      $("#order_totalprice").text(total_price);
+      toast("Add to cart succes");
+    }
+
   </script>
   
     

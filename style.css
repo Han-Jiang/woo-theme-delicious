@@ -42,3 +42,51 @@
       
       display: table-cell;
     }
+
+  div.quantity {
+    white-space: nowrap;
+    /* Disable input[type=number] buttons until the world is ready */
+
+  }
+  div.quantity input::-webkit-outer-spin-button,
+  div.quantity input::-webkit-inner-spin-button {
+    display: none;
+  }
+  div.quantity .plus,
+  div.quantity .minus {
+    font-family: 'WebSymbolsRegular';
+    background: none;
+    border: none;
+    font-size: 1.387em;
+    padding: 0;
+    color: #ff4800;
+    -webkit-transition: all ease-in-out 0.2s;
+    -moz-transition: all ease-in-out 0.2s;
+    -ms-transition: all ease-in-out 0.2s;
+    -o-transition: all ease-in-out 0.2s;
+    transition: all ease-in-out 0.2s;
+  }
+  div.quantity .plus:hover,
+  div.quantity .minus:hover {
+    color: #dd2600;
+  }
+  div.quantity .qty {
+    margin: 0 .618em;
+    width: 2.618em;
+    text-align: center;
+    padding-left: 0;
+    padding-right: 0;
+  }
+  table div.quantity {
+    font-size: .857em;
+  }
+  .single-product div.quantity {
+    float: left;
+    margin-right: 1.618em;
+    border-right: 4px double #e8e4e3;
+    padding-right: 1.618em;
+  }
+  .single-product table div.quantity {
+    padding-right: 0;
+    border: 0;
+  }

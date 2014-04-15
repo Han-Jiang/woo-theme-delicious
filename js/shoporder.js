@@ -160,8 +160,7 @@ function OnOrderAddfoodSuccess(data, status)
 	document.getElementById('order_foodnum_' + food_id).innerHTML = food_num;
 	
 	//再改变显示
-	if (food_num > 0)
-	{
+	if (food_num > 0){
 		document.getElementById('foodattention_' + food_id).className = "foodattention-active";
 	}
 	else
@@ -172,21 +171,23 @@ function OnOrderAddfoodSuccess(data, status)
 
 function OnOrderAddfoodFailed(data, status)
 {
+	console.log(" OnOrderAddfoodFailed");
 	
 }
 
 function order_plus_onclick(food_id, destUrl)
 {
+	console.log("order_plus_onclick");
 	var curNum = parseInt(document.getElementById('order_foodnum_' + food_id).innerHTML);
 	if(curNum >= 99)
 	{
 		return;
 	}
-	
+	console.log("destUrl+curNum");
 	$.ajax({
         type: "GET",
-        url: destUrl,
-        dataType : "json",  
+        url: destUrl+curNum,
+        dataType : "html",  
         cache : false,
         success: OnOrderAddfoodSuccess,
         error: OnOrderAddfoodFailed,

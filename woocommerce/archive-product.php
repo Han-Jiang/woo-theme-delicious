@@ -25,11 +25,16 @@
 			<span id="order_totalprice">
 			<?php
 			global $woocommerce;
-			echo $woocommerce->cart->get_cart_total();
+			$amount2 = floatval( preg_replace( '#[^\d.]#', '', $woocommerce->cart->get_cart_total() ) );
+			// $amount2 = floatval( preg_replace( '#[^\d.]#', '', "£3,141.08" ) );
+
+			echo $amount2;
+			// var_dump($woocommerce->cart->total);
+			// echo $woocommerce->cart->get_cart_total();
 			?></span></p>	
 			
 			<div id="order_next_layout">
-				<a id="order_next_text" href="<?php echo $woocommerce->cart->get_cart_url(); ?>">下一步 ＞</a>
+				<a id="order_next_text" rel="external" href="<?php echo $woocommerce->cart->get_cart_url(); ?> ?theme=0han_foodstile ">下一步 ＞</a>
 			</div>	
 		</div>
 
@@ -59,8 +64,8 @@
 			</div>  <!-- #typelist -->
 			
 			<div id="foodlist">
-				<div id="wrapper_content" class="wrapper">
-					<div id="scroller_content" class="scroller">
+				<div id="wrapper_content">
+					<div id="scroller_content">
 	
 						<div class="model_1">
 	
@@ -80,6 +85,7 @@
 					</div> <!-- #scroller2 -->
 				</div> <!-- #wrapper2 -->
 		    </div> <!-- #foodlist -->
+		    
 		</div> <!-- #order-content -->
 	</div> <!-- data-role="content" -->
 	
